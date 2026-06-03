@@ -50,6 +50,8 @@
 				document.body.style.backgroundImage = `url('static/${data.background_path}')`
 				document.body.style.backdropFilter = 'blur(50px)'
 				document.body.style.backgroundSize = 'cover'
+				element.querySelector("#instagram").onclick = () => {location.href = String(data.instagram_url)}
+				element.querySelector("#tiktok").onclick = () => {location.href = String(data.tiktok_url)}
             }
 
             window.componentRegistry.register("header", init)
