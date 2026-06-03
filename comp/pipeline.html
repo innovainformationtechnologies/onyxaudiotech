@@ -1,0 +1,128 @@
+<div class="pipeline_container">
+    <div class="card pipeline_body">
+		<div class="controls flex row spread">
+			<input type="button" class="btn-secondary add_node" value="Music" id="music">
+			<input type="button" class="btn-secondary add_node" value="Art" id="portfolio_card_3d">
+			<input type="button" class="btn-secondary add_node" value="Games" id="games">
+		</div>
+		<div id="output_control"></div>
+    </div>
+    <style>
+		
+		.controls{
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-start;
+			align-items: center;
+			gap: 2rem;
+			&>*{
+				width: 100%
+			}
+		}
+		.pipeline_body{
+			padding: 1rem;
+			min-width: 50vw;
+			width: fit-content;
+			margin: auto auto;
+			display: flex;
+			flex-direction: column;
+		}
+		#output_control{
+			margin: auto auto;
+			width: fit-content;
+			height: fit-content;
+			border: 1px solid var(--border);
+    		border-radius: var(--radius);
+			padding: 1rem;
+		}
+		#node_select{
+			width: fit;
+		}
+		@media screen and (max-width: 1000px) {
+			.pipeline_body{
+				height: 50vh;
+				width: 100%;
+			}
+		}
+    </style>
+    <script>
+        (function(){
+			let status = null
+			let selected_format = null;
+
+			async function set_output(node){
+				let loadComponent, componentRegistry
+				await import("./scripts/util.js").then((module) => {
+					loadComponent = module.loadComponent;
+					componentRegistry = module.componentRegistry
+				});
+				let output_control = document.querySelector("#output_control")
+				output_control.innerHTML = "";	
+				await loadComponent(node, output_control)
+				data = {id: "output_control"}
+				switch (node) {
+					case "music":
+						data.music_url = localStorage.getItem("music_url")
+						break;
+					case "portfolio_card_3d":
+						data.model_path = localStorage.getItem("3d_model")
+						data.x = 0
+						data.y = 2
+						data.z = 5
+						data.immersive = "true"
+						data.canvas_width = "50vw"
+						data.canvas_height = "50vh"
+						data.title = "Mazdaspeed3"
+						data.description = "A 3D model of a Mazda Speed 3"
+						break;
+					case "games":
+						data.game_url = localStorage.getItem("game_url")
+						
+						break;
+				}
+				componentRegistry.get(node)(data)
+				selected_format = node
+				// let close_btn = document.createElement("button")
+				// close_btn.classList.add("btn-primary")
+				// close_btn.innerHTML = "<span class=\"text\">x</span>"
+				// close_btn.onclick = () => {
+				// 	nodes.splice(nodes.indexOf(node), 1)
+				// 	close_btn.parentElement.remove()
+				// }
+			}
+
+			function select_random_tab(arr, element) {
+				const getRandomItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
+				let tab = getRandomItem(arr);
+				set_output(tab)
+				element.querySelectorAll(".add_node").forEach(b => {
+					b.classList.remove("active")
+					if (b.id == tab) {
+						b.classList.add("active")
+					}
+				})
+			}
+
+            function init(data){
+                const element = document.getElementById(`${data.id}`)
+				localStorage.setItem("music_url", data.music_url)
+				localStorage.setItem("3d_model", data.model_path)
+				localStorage.setItem("game_url", data.game_url)
+				element.querySelectorAll(".add_node").forEach(b => {
+					b.onclick = () => {
+						set_output(b.id)
+						b.classList.add("active")
+					}
+					b.onmouseout = () => {
+						b.classList.remove("active")
+					}
+				})
+				
+				
+				select_random_tab(["music", "portfolio_card_3d", "games"], element)
+            }
+
+            window.componentRegistry.register("pipeline", init)
+        })()
+    </script>
+</div>

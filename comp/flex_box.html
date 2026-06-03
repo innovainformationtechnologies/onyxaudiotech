@@ -1,0 +1,64 @@
+<div class="flex_row_container">
+    <div id="flex_row" class="flex_row_body">
+    </div>
+    <style>
+        .flex_box_container{
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .flex_box_body{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    <script>
+        (function(){
+            function adjustFlexOnWindowResize(data, element){
+                console.log("adjustFlexOnWindowResize")
+                if (window.innerWidth < 1000) {
+                    console.log("mobile")
+                    element.style.flexDirection = data.flex_direction_mobile
+                    element.style.justifyContent = "center"
+                    element.style.alignItems = "left"
+                } else {
+                    console.log("desktop")
+                    element.style.paddingTop = "18vh"
+                    element.style.flexDirection = data.flex_direction
+                    element.style.flexWrap = "wrap"
+                    // element.style.gridTemplateColumns = "auto auto"
+                }
+            }
+            function init(data){
+                console.log("flex ", data)
+                const element = document.getElementById(`${data.id}`)
+                element.style.display = "flex"
+                element.style.flexWrap = "wrap"
+                element.style.flexDirection = data.flex_direction
+                element.style.justifyContent = "center"
+                element.style.justifyItems = "center"
+                element.style.alignItems = "center"
+                element.style.alignContent = "center"
+                element.style.alignSelf = "center"
+                element.style.gap = data.gap
+                element.style.margin = "auto"
+                
+                
+                window.onresize =() => {
+                    // alert("resize")
+                    adjustFlexOnWindowResize(data, element)
+                }
+                adjustFlexOnWindowResize(data, element)
+            }
+
+            window.componentRegistry.register("flex_box", init)
+        })()
+    </script>
+</div>

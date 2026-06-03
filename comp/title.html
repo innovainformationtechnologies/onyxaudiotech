@@ -1,0 +1,59 @@
+<!-------------------------------------
+Portfolio
+Author: Innova Information Technologyies
+Args: id, title
+--------------------------------------->
+
+<div class="title_container">
+    <div class="title_body">
+        <h1 class="text1 title">Onyx Audio Tech</h1>
+        <h2 class="text2 subtitle">Live 24/7</h2>
+        <button class="btn-primary" id="youtube">▶︎ On youtube</button>
+    </div>
+    <style>
+        .title_container{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 10vh auto 0 auto;
+        }
+        .title_body{
+            width: 40vw;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            &>.title{
+                text-align: center;
+                font-size: var(--font_size_title) !important;
+            }
+            &>.controls{
+                width: 50%;
+                &>*{
+                    margin: auto;
+                }
+            }
+        }
+
+    </style>
+    <script>
+        (function(){
+            function init(data){
+                // selects the element
+                const element = document.getElementById(`${data.id}`)
+                // sets the text
+                element.querySelector(".text1").innerText = data.title
+                // changes the font size
+                element.style.setProperty('--font_size_title', `${parseInt(document.body.style.getPropertyValue('--font_size_h1'))*1.5}px`)
+                // adds event listeners
+                element.querySelector("#youtube").onclick = () => {location.href = String(data.youtube_url)}
+            }
+            // registers the component
+            window.componentRegistry.register("title", init)
+        })()
+    </script>
+</div>

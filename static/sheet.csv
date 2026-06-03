@@ -1,0 +1,15 @@
+component,background,text,primary_color,accent_color,font_family_heading,font_family_body,font_size_base,title,surface,radius
+theme,#0d0d0d,#aaa,#fff,#BBB,Consolas,Consolas,10,Onyx Audio Tech,#14141477,1rem
+,,,,,,,,,,
+component,id,donation_url,logo_path,background_path,,,,,,
+header,header_01,https://donate.stripe.com/14kaFI9iH5iieo86oo,logo.png,20230820_151640.jpg,,,,,,
+,,,,,,,,,,
+component,id,flex_direction,flex_direction_mobile,gap,,,,,,
+flex_box,flex_box_01,row,column,2rem,,,,,,
+,,,,,,,,,,
+component,id,parent_id,title,youtube_url,instagram_url,tiktok_url,instagram_path,tiktok_path,,
+title,title_01,flex_box_01,Onyx Audio Tech,,,,instagram-logo-icon-transparent-background-free-png.webp,tiktok-logo-tiktok-social-media-icon-free-png.webp,,
+,,,,,,,,,,
+component,id,parent_id,music_url,model_path,game_url,,,,,
+pipeline,pipeline_01,flex_box_01,https://bandcamp.com/EmbeddedPlayer/album=2277375525/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/,mazdaspeed3.glb,https://itsoasi.github.io/candy_kitty/,,,,,
+,,,,,,,,,,

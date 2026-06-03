@@ -1,0 +1,58 @@
+<div class="header_container">
+    <div class="header_body">
+		<div class="logo"></div>
+		<div class="spacer"></div>
+		<button class="btn-secondary"><img id="instagram" src="https://cdn-icons-png.flaticon.com/512/174/174855.png"></button>
+        <button class="btn-secondary"><img id="tiktok" src="   https://cdn-icons-png.flaticon.com/512/3046/3046126.png "></button>
+		<button class="btn-secondary" id="donate">🕊️</button>
+    </div>
+    <style>
+		.header_body{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			margin: auto auto;
+			padding: 1rem 2rem;
+			&>button{
+				font-size: 2rem !important;
+				&>img{
+				width: 2.5rem;
+				height: 2.5rem;
+				object-fit: contain;
+				}
+			}
+		}
+		.logo{
+			width: 10rem;
+			height: 10rem;
+			background-size: contain;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+		.header_container{
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			width: 100vw;
+			z-index: 100;
+		}
+		
+    </style>
+    <script>
+        (function(){
+			
+            function init(data){
+                const element = document.getElementById(`${data.id}`)
+				element.querySelector("#donate").onclick = () => {location.href = String(data.donation_url)}
+				element.querySelector(".logo").style.backgroundImage = `url('static/${data.logo_path}')`
+				document.body.style.backgroundImage = `url('static/${data.background_path}')`
+				document.body.style.backdropFilter = 'blur(50px)'
+				document.body.style.backgroundSize = 'cover'
+            }
+
+            window.componentRegistry.register("header", init)
+        })()
+    </script>
+</div>
