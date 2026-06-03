@@ -1,6 +1,6 @@
 {
-    "debug": true,
+    "debug": false,
     "version": "1.1.0",
     "local_sheet_url":"./static/sheet.csv",
-	"remote_sheet_url":""
+	"remote_sheet_url":"https://docs.google.com/spreadsheets/d/1E_Fnj5K0wqLErId0DuMPrpZh2OqPlzS9JhoDRa6DW5A/edit?usp=sharing"
 }

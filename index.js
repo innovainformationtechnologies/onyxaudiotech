@@ -19,7 +19,7 @@ let data = [];
 
 console.log(getCSVContents)
 
-await getCSVContents("./static/sheet.csv", null).then(data => {
+await getCSVContents("./static/sheet.csv", config.remote_sheet_url).then(data => {
   console.log(data)
   buildPage(data);
 });
