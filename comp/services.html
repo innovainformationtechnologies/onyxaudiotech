@@ -1,0 +1,76 @@
+<div class="timelapse_container">
+    <div class="services_body">
+			<h1 class="title">You have an idea. Let's make it real.</h1>
+			<p>My work lives at the intersection of music, art, and interactive technology.</p>
+			<p>Contact: <a href="mailto:onyxaudiotech@gmail.com">onyxaudiotech@gmail.com</a></p>
+			<details>
+				<summary>Websites & Web Apps</summary>
+				<p>Try out the <a target="_blank" class="btn-secondary" href="https://innovainformationtechnologies.netlify.app/">SheetSite</a> framework. No monthly platform fees after delivery. You own it outright.</p>
+				<ul>
+					<li>New SheetSite — $500</li>
+					<li>Migration from any framework — $500</li>
+					<li>Updates to existing site (any framework) — $500</li>
+					<li>First custom component included — +$50 each after</li>
+				</ul>
+			</details>
+			<details>
+				<summary>Ongoing Maintenance</summary>
+				<ul>
+					<li>Standard maintenance (no new component) — $50</li>
+					<li>Maintenance + new component — $100</li>
+					<li>Monthly maintenance plan — $50/mo</li>
+				</ul>  
+			</details>  
+			<details>
+				<summary>Creative & Interactive Experiences</summary>
+				<p>Visualizers, games, installations, live experiences. Every project is different. Email me the idea.</p>
+			</details>
+			<details>    
+				<summary>Software Tools & Automation</summary>    
+				<p>Custom tools built on Vorchestra. Scope and timeline determine pricing — figure at least a month's rent for anything beyond a simple integration. Email me your specs.</p>  </details>  <details>    <summary>Audio & Video Production</summary>    <p>Live events, stage builds, audio and video setup. Equipment rental and crew factor into every quote. Email me what you're planning.</p>  
+				
+			</details>	
+	</div>
+
+    <style>
+		.controls{
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-start;
+			align-items: center;
+			gap: 2rem;
+		}
+		.services_body{
+			height: 60vh;
+			width: fit-content;
+			max-width: 40vw;
+			overflow-y: auto;
+		}
+		summary{
+			cursor: pointer;
+			background-color: var(--surface);
+			color: var(--primary_color);
+			padding: 1rem;
+			border-radius: 1rem;
+			margin: 1rem 0;
+		}
+        .block_image{
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 1rem;
+        }
+    </style>
+    <script>
+        (function(){
+
+            function init(data){
+                const element = document.getElementById(`${data.id}`)
+				const iframe = element.querySelector("#iframe")
+				iframe.src = data.services_url
+            }
+
+            window.componentRegistry.register("services", init)
+        })()
+    </script>
+</div>

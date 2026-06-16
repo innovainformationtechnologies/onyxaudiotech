@@ -4,7 +4,6 @@
 		<div class="spacer"></div>
 		<button class="btn-secondary"><img id="instagram" src="https://cdn-icons-png.flaticon.com/512/174/174855.png"></button>
         <button class="btn-secondary"><img id="tiktok" src="   https://cdn-icons-png.flaticon.com/512/3046/3046126.png "></button>
-		<button class="btn-secondary" id="contact">💬</button>
     </div>
     <style>
 		.header_body{
@@ -45,10 +44,6 @@
 			
             function init(data){
                 const element = document.getElementById(`${data.id}`)
-				element.querySelector("#contact").onclick = () => {
-					// Open default email client with pre-filled fields
-					window.location.href = "static/onyx-menu 1.pdf"
-				}
 				element.querySelector(".logo").style.backgroundImage = `url('static/${data.logo_path}')`
 				document.body.style.backgroundImage = `url('static/${data.background_path}')`
 				document.body.style.backdropFilter = 'blur(50px)'
